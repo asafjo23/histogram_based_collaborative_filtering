@@ -33,7 +33,7 @@ class DataProcessor:
                 ratings_as_tensor, bins=self.max_rating, min=self.min_rating, max=self.max_rating
             )
             item_to_index_rating[user_id] = {
-                item_id: i for i, (_, _, item_id, _) in enumerate(group.itertuples())
+                item_id: i for i, (_, _, item_id, _, _, _) in enumerate(group.itertuples())
             }
 
         return ratings_by_users, histograms_by_users, item_to_index_rating

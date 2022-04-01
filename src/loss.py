@@ -19,7 +19,6 @@ class Loss:
         predicted_mass: torch.Tensor,
         total_mass: torch.Tensor,
     ) -> torch.Tensor:
-
         histogram_loss = (
             torch.divide(torch.abs(torch.sub(original_mass, predicted_mass)), total_mass)
             .sum()

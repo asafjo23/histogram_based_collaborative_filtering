@@ -75,7 +75,7 @@ def _to_index(min_rating: int, max_rating: int, rating: Tensor) -> int:
 
 
 def _calc_histogram_mass(histogram: Tensor, end: int) -> Tensor:
-    area = histogram[0:end]
+    area = histogram[0:end + 1]
     if len(area) == 0:
         return Tensor([0.0])
 
