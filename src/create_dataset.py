@@ -53,15 +53,17 @@ def _add_total_mass_features(group: Series) -> float:
 
 
 def _add_original_mass_features(row, group: Series, min_rating: int, max_rating: int) -> float:
+    min_rating = round(min_rating)
+    max_rating = round(max_rating)
     histogram = torch.histc(
         torch.Tensor(group.rating.values), bins=max_rating, min=min_rating, max=max_rating
     )
-    mass = _calc_histograms_tensors(histogram=histogram, end=row["rating"])
+    mass = _calc_histograms_tensors(histogram=histogram, end=round(row["rating"]))
     return mass.item()
 
 
 def _calc_histograms_tensors(histogram: torch.Tensor, end: int) -> torch.Tensor:
-    area = histogram[0 : end + 1]
+    area = histogram[0: end + 1]
     if len(area) == 0:
         return torch.Tensor([0.0])
 

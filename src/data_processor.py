@@ -30,7 +30,10 @@ class DataProcessor:
             ratings_as_tensor = torch.Tensor(group.rating.values)
             ratings_by_users[user_id] = Parameter(ratings_as_tensor, requires_grad=False)
             histograms_by_users[user_id] = torch.histc(
-                ratings_as_tensor, bins=self.max_rating, min=self.min_rating, max=self.max_rating
+                ratings_as_tensor,
+                bins=round(self.max_rating),
+                min=round(self.min_rating),
+                max=round(self.max_rating),
             )
             item_to_index_rating[user_id] = {
                 item_id: i for i, (_, _, item_id, _, _, _) in enumerate(group.itertuples())

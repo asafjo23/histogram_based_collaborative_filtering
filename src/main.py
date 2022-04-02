@@ -15,11 +15,9 @@ from src.data_encoder import DataEncoder
 DF_PATH = f"{DATA_DIR}/MovieLens/ratings.csv"
 
 if __name__ == "__main__":
-    columns = ["userId", "movieId", "rating"]
-    original_df = read_csv(DF_PATH, skipinitialspace=True, usecols=columns, nrows=500000)
-    original_df.columns = ["user_id", "item_id", "rating"]
-    original_df = original_df.astype({"user_id": "int32"})
-    original_df = original_df.astype({"item_id": "int32"})
-    original_df = original_df.astype({"rating": "int32"})
+    original_df = read_csv(DF_PATH, skipinitialspace=True, nrows=500000)
+    original_df.columns = ["user_id", "item_id", "rating", "timestamp"]
+    original_df = original_df[["user_id", "item_id", "rating"]]
+
     create_histogram_features(data_frame=original_df)
 
