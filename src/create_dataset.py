@@ -41,19 +41,14 @@ def create_histogram_features(data_frame: DataFrame) -> None:
     data_frame["total_mass"] = data_frame.progress_apply(
         lambda row: _add_total_mass_features(
             group=items_grouped_by_user.get_group(row["user_id"]),
-            min_rating=min_rating,
-            max_rating=max_rating,
         ),
         axis=1,
     )
-    data_frame.to_csv(f"{DATA_DIR}/BookCrossing/BX-Book-Ratings-With-Histogram_features.csv")
+    data_frame.to_csv(f"{DATA_DIR}/MovieLens/ratings_500k_with_histogram_features.csv")
 
 
-def _add_total_mass_features(group: Series, min_rating: int, max_rating: int) -> float:
-    histogram = torch.histc(
-        torch.Tensor(group.rating.values), bins=max_rating, min=min_rating, max=max_rating
-    )
-    total_mass = sum(histogram).item()
+def _add_total_mass_features(group: Series) -> float:
+    total_mass = len(group)
     return total_mass
 
 
@@ -66,7 +61,7 @@ def _add_original_mass_features(row, group: Series, min_rating: int, max_rating:
 
 
 def _calc_histograms_tensors(histogram: torch.Tensor, end: int) -> torch.Tensor:
-    area = histogram[0:end + 1]
+    area = histogram[0 : end + 1]
     if len(area) == 0:
         return torch.Tensor([0.0])
 
