@@ -57,9 +57,9 @@ class HistogramMF(Module):
 
             predicted_histogram = torch.histc(
                 original_ratings_by_user,
-                bins=self._max_rating,
-                min=self._min_rating,
-                max=self._max_rating,
+                bins=round(self._max_rating),
+                min=round(self._min_rating),
+                max=round(self._max_rating),
             )
             predicted_mass = _calc_histogram_mass(predicted_histogram, predicted_rating_index)
             histograms_mass[i] = predicted_mass
@@ -75,7 +75,7 @@ def _to_index(min_rating: int, max_rating: int, rating: Tensor) -> int:
 
 
 def _calc_histogram_mass(histogram: Tensor, end: int) -> Tensor:
-    area = histogram[0:end]
+    area = histogram[0 : end + 1]
     if len(area) == 0:
         return Tensor([0.0])
 

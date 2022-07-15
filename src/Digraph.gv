@@ -1,0 +1,71 @@
+digraph {
+	graph [size="12,12"]
+	node [align=left fontname=monospace fontsize=10 height=0.2 ranksep=0.1 shape=box style=filled]
+	5277733328 [label="
+ ()" fillcolor=darkolivegreen1]
+	5232033168 [label=AddBackward0]
+	5232030000 -> 5232033168
+	5232030000 [label=SqueezeBackward0]
+	5199831344 -> 5232030000
+	5199831344 [label=SumBackward0]
+	5199834464 -> 5199831344
+	5199834464 [label=DivBackward0]
+	5199832400 -> 5199834464
+	5199832400 [label=AbsBackward0]
+	5251620528 -> 5199832400
+	5251620528 [label=SubBackward0]
+	5251619568 -> 5251620528
+	5251619568 [label=SqueezeBackward0]
+	5251618848 -> 5251619568
+	5251618848 [label=SliceBackward0]
+	5251618464 -> 5251618848
+	5251618464 [label=SliceBackward0]
+	5251620192 -> 5251618464
+	5251620192 [label=StackBackward0]
+	5251620432 -> 5251620192
+	5251620432 [label=AddBackward0]
+	5251619808 -> 5251620432
+	5251619808 [label=AddBackward0]
+	5251617552 -> 5251619808
+	5251617552 [label=EmbeddingBackward0]
+	5251618704 -> 5251617552
+	5238032800 [label="
+ (105283, 1)" fillcolor=lightblue]
+	5238032800 -> 5251618704
+	5251618704 [label=AccumulateGrad]
+	5251617072 -> 5251619808
+	5251617072 [label=EmbeddingBackward0]
+	5251619088 -> 5251617072
+	5238032160 [label="
+ (340553, 1)" fillcolor=lightblue]
+	5238032160 -> 5251619088
+	5251619088 [label=AccumulateGrad]
+	5251620624 -> 5251620432
+	5251620624 [label=SumBackward1]
+	5251617840 -> 5251620624
+	5251617840 [label=MulBackward0]
+	5251617312 -> 5251617840
+	5251617312 [label=EmbeddingBackward0]
+	5251618080 -> 5251617312
+	5182104976 [label="
+ (105283, 50)" fillcolor=lightblue]
+	5182104976 -> 5251618080
+	5251618080 [label=AccumulateGrad]
+	5251617168 -> 5251617840
+	5251617168 [label=EmbeddingBackward0]
+	5251618176 -> 5251617168
+	5182573920 [label="
+ (340553, 50)" fillcolor=lightblue]
+	5182573920 -> 5251618176
+	5251618176 [label=AccumulateGrad]
+	5199833360 -> 5232033168
+	5199833360 [label=MseLossBackward0]
+	5199832784 -> 5199833360
+	5199832784 [label=SqueezeBackward0]
+	5251617264 -> 5199832784
+	5251617264 [label=SliceBackward0]
+	5251620240 -> 5251617264
+	5251620240 [label=SliceBackward0]
+	5251620192 -> 5251620240
+	5232033168 -> 5277733328
+}
